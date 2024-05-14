@@ -28,7 +28,7 @@ function UpdateBook(){
         };
         console.log(book);
         setLoading(true);
-        axios.put(`http://localhost:5555/books/${id}`, book)
+        axios.put(`book-store-mern-delta.vercel.app/books/${id}`, book)
             .then(() => {
                 setLoading(false);
                 enqueueSnackbar("Book edited successfully",{variant:'success'});
