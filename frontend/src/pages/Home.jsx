@@ -15,7 +15,7 @@ function Home() {
     
     useEffect(() => {
         setLoading(true);
-        axios.get('http://localhost:5555/books')
+        axios.get('book-store-mern-delta.vercel.app/books')
             .then((response) => {
                 setBooks(response.data.data);
                 setLoading(false);
