@@ -1,16 +1,14 @@
 
-import express, { response } from "express";
-import { PORT,mongoDBUrl } from "./config.js";
-import  mongoose  from "mongoose";
-import booksRoute from "./routes/booksRoute.js";
+import express from "express";
+import mongoose from "mongoose";
 import cors from 'cors';
+import booksRoute from "./routes/booksRoute.js";
+import { PORT, mongoDBUrl } from "./config.js";
 
+const app = express();
 
-const app=express();
-
-app.use(express.json());   // allows to use json files (middleware for parsing request body)
-
-//middleware for handeling cors policy
+// Middleware
+app.use(express.json()); // Middleware for parsing request body
 
 app.use(cors({
 origin:"https://book-store-frontend-nu.vercel.app/",
@@ -18,27 +16,23 @@ methods:['GET','POST','PUT','DELETE'],
 allowedHeaders:['Content-Type'],
 })); 
 
-// app.use(cors({
-// origin:"http://localhost:3000",
-// methods:['GET','POST','PUT','DELETE'],
-// allowedHeaders:['Content-Type'],
-// }));  // Allow custom origins
+// Routes
+app.get('/', (req, res) => {
+    res.status(200).send("Welcome to my first official application");
+});
 
+app.use('/books', booksRoute);
 
-app.get('/',(req,res)=>{
-console.log(req);
-return res.status(234).send("Welcome to my first official applocation");
-})
+// Connect to MongoDB
+mongoose.connect(mongoDBUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        console.log('Connected to MongoDB');
+        // Start the server
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}`);
+        });
+    })
+    .catch((err) => {
+        console.error('Error connecting to MongoDB:', err);
+    });
 
-app.use('/books',booksRoute);
-
-mongoose.connect(mongoDBUrl)
-.then(()=>{
-console.log('App connected to database');
-app.listen(PORT,()=>{
-    console.log(`App is Listening on port ${PORT}`);    
-})
-})
-.catch((err)=>{
-console.log(err);
-})
