@@ -1,3 +1,4 @@
+
 import express, { response } from "express";
 import { PORT,mongoDBUrl } from "./config.js";
 import  mongoose  from "mongoose";
@@ -10,12 +11,12 @@ const app=express();
 app.use(express.json());   // allows to use json files (middleware for parsing request body)
 
 //middleware for handeling cors policy
- 
+
 app.use(cors({
-origin:{"https://book-store-frontend-nu.vercel.app/"},
- methods:["POST","GET","PUT","PATCH","DELETE"],
- credentials:true
-}));  // Allow all origins with default of cors(*)
+origin:"https://book-store-frontend-nu.vercel.app/",
+methods:['GET','POST','PUT','DELETE'],
+allowedHeaders:['Content-Type'],
+})); 
 
 // app.use(cors({
 // origin:"http://localhost:3000",
