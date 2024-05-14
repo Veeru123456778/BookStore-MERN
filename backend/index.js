@@ -11,7 +11,11 @@ app.use(express.json());   // allows to use json files (middleware for parsing r
 
 //middleware for handeling cors policy
  
-app.use(cors());  // Allow all origins with default of cors(*)
+app.use(cors({
+origin:{"https://book-store-frontend-nu.vercel.app/"},
+ methods:["POST","GET","PUT","PATCH","DELETE"],
+ credentials:true
+}));  // Allow all origins with default of cors(*)
 
 // app.use(cors({
 // origin:"http://localhost:3000",
