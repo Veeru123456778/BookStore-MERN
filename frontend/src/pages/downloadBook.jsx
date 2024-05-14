@@ -6,7 +6,7 @@ function DownloadBook() {
     const [downloadMessage, setDownloadMessage] = useState('');
 
     const handleDownload = () => {
-        axios.get('book-store-mern-delta.vercel.app/books/download')
+        axios.get('https://book-store-mern-delta.vercel.app/books/download')
             .then(() => {
                 setDownloadMessage('Book downloaded successfully');
             })
