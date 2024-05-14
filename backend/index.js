@@ -14,6 +14,7 @@ app.use(cors({
 origin:"https://book-store-frontend-nu.vercel.app/",
 methods:['GET','POST','PUT','DELETE'],
 allowedHeaders:['Content-Type'],
+credentials:true
 })); 
 
 // Routes
