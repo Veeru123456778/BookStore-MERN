@@ -13,7 +13,7 @@ function DeleteBook(){
    
         function DeleteBook(){
         setLoading(true);
-    axios.delete(`book-store-mern-delta.vercel.app/books/${id}`)
+    axios.delete(`https://book-store-mern-delta.vercel.app/books/${id}`)
     .then((response)=>{
         setLoading(false);
         enqueueSnackbar("Book Deleted Successfully",{variant:'success'});
