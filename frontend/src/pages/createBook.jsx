@@ -24,7 +24,7 @@ function CreateBook() {
         
         console.log(book);
         setLoading(true);
-        axios.post('book-store-mern-delta.vercel.app/books', book)
+        axios.post('https://book-store-mern-delta.vercel.app/books', book)
             .then(() => {
                 setLoading(false);
                 enqueueSnackbar('Book Created Successfully',{variant:'success'});
