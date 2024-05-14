@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json()); // Middleware for parsing request body
 
 app.use(cors({
-origin:"https://book-store-frontend-nu.vercel.app/",
+origin:"https://book-store-frontend-nu.vercel.app",
 methods:['GET','POST','PUT','DELETE'],
 allowedHeaders:['Content-Type'],
 credentials:true
